@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Library.Models.Member>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Members</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any members yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Member</th>
+                <th>Discount Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var member in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(member.Name, "Edit", "Members", new { id = member.Id}, null)</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Library.Models.Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+@Html.ActionLink("New Book", "New", "Movies", null, new { @class = "btn btn-primary"})
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Books</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(book.Name, "Details", "Books", new { id = book.Id}, null)</td>
+                <td>@book.Genre.Name</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
